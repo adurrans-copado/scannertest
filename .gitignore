@@ -27,7 +27,7 @@ classes/TIMBASURVEYS__*
 triggers/TIMBASURVEYS__*
 pages/TIMBASURVEYS__*
 
-Canvases*
+#Canvases*
 
 #Translations are complex since they get updated indirectly across multiple files, they can make a deployment fail.
 #if a field is translated in source and it doesn't exist on destination. 
