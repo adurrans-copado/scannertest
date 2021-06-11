@@ -1,0 +1,1207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExternalServiceRegistration xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>SECAPI</description>
+    <label>SECAPI</label>
+    <namedCredential>SECAPI</namedCredential>
+    <schema>{
+   &quot;swagger&quot;: &quot;2.0&quot;,
+   &quot;info&quot;: {
+      &quot;title&quot;: &quot;Sec API 2.0 Gateway&quot;,
+      &quot;version&quot;: &quot;v1&quot;
+   },
+   &quot;paths&quot;: {
+      &quot;/api/v2/sast/scan/report/{type}/{appId}/{reqId}&quot;: {
+         &quot;get&quot;: {
+            &quot;produces&quot;: [
+               &quot;text/plain&quot;,
+               &quot;application/json&quot;,
+               &quot;text/json&quot;
+            ],
+            &quot;parameters&quot;: [
+               {
+                  &quot;in&quot;: &quot;path&quot;,
+                  &quot;name&quot;: &quot;type&quot;,
+                  &quot;required&quot;: true,
+                  &quot;type&quot;: &quot;string&quot;
+               },
+               {
+                  &quot;in&quot;: &quot;path&quot;,
+                  &quot;name&quot;: &quot;appId&quot;,
+                  &quot;required&quot;: true,
+                  &quot;type&quot;: &quot;string&quot;
+               },
+               {
+                  &quot;in&quot;: &quot;path&quot;,
+                  &quot;name&quot;: &quot;reqId&quot;,
+                  &quot;required&quot;: true,
+                  &quot;type&quot;: &quot;string&quot;
+               }
+            ],
+            &quot;responses&quot;: {
+               &quot;200&quot;: {
+                  &quot;description&quot;: &quot;Success&quot;,
+                  &quot;schema&quot;: {
+                     &quot;format&quot;: &quot;binary&quot;,
+                     &quot;type&quot;: &quot;string&quot;
+                  }
+               }
+            },
+            &quot;tags&quot;: [
+               &quot;SAST&quot;
+            ]
+         }
+      },
+      &quot;/api/v2/sast/scan/score/{appId}/{reqId}&quot;: {
+         &quot;get&quot;: {
+            &quot;produces&quot;: [
+               &quot;text/plain&quot;,
+               &quot;application/json&quot;,
+               &quot;text/json&quot;
+            ],
+            &quot;parameters&quot;: [
+               {
+                  &quot;in&quot;: &quot;path&quot;,
+                  &quot;name&quot;: &quot;appId&quot;,
+                  &quot;required&quot;: true,
+                  &quot;type&quot;: &quot;string&quot;
+               },
+               {
+                  &quot;in&quot;: &quot;path&quot;,
+                  &quot;name&quot;: &quot;reqId&quot;,
+                  &quot;required&quot;: true,
+                  &quot;type&quot;: &quot;string&quot;
+               }
+            ],
+            &quot;responses&quot;: {
+               &quot;200&quot;: {
+                  &quot;description&quot;: &quot;Success&quot;,
+                  &quot;schema&quot;: {
+                     &quot;$ref&quot;: &quot;#/definitions/ApiGwScoreCardModel&quot;
+                  }
+               }
+            },
+            &quot;tags&quot;: [
+               &quot;SAST&quot;
+            ]
+         }
+      },
+      &quot;/api/v2/sast/scan/start/{appId}&quot;: {
+         &quot;post&quot;: {
+            &quot;consumes&quot;: [
+               &quot;application/json&quot;,
+               &quot;text/json&quot;
+            ],
+            &quot;parameters&quot;: [
+               {
+                  &quot;in&quot;: &quot;path&quot;,
+                  &quot;name&quot;: &quot;appId&quot;,
+                  &quot;required&quot;: true,
+                  &quot;type&quot;: &quot;string&quot;
+               },
+               {
+                  &quot;in&quot;: &quot;header&quot;,
+                  &quot;name&quot;: &quot;userName&quot;,
+                  &quot;type&quot;: &quot;string&quot;
+               },
+               {
+                  &quot;in&quot;: &quot;body&quot;,
+                  &quot;name&quot;: &quot;body&quot;,
+                  &quot;schema&quot;: {
+                     &quot;$ref&quot;: &quot;#/definitions/SastApplicationInfoModel&quot;
+                  }
+               }
+            ],
+            &quot;responses&quot;: {
+               &quot;202&quot;: {
+                  &quot;description&quot;: &quot;Success&quot;
+               }
+            },
+            &quot;tags&quot;: [
+               &quot;SAST&quot;
+            ]
+         }
+      },
+      &quot;/api/v2/sast/scan/status/{appId}/{reqId}&quot;: {
+         &quot;get&quot;: {
+            &quot;produces&quot;: [
+               &quot;text/plain&quot;,
+               &quot;application/json&quot;,
+               &quot;text/json&quot;
+            ],
+            &quot;parameters&quot;: [
+               {
+                  &quot;in&quot;: &quot;path&quot;,
+                  &quot;name&quot;: &quot;appId&quot;,
+                  &quot;required&quot;: true,
+                  &quot;type&quot;: &quot;string&quot;
+               },
+               {
+                  &quot;in&quot;: &quot;path&quot;,
+                  &quot;name&quot;: &quot;reqId&quot;,
+                  &quot;required&quot;: true,
+                  &quot;type&quot;: &quot;string&quot;
+               }
+            ],
+            &quot;responses&quot;: {
+               &quot;200&quot;: {
+                  &quot;description&quot;: &quot;Success&quot;,
+                  &quot;schema&quot;: {
+                     &quot;$ref&quot;: &quot;#/definitions/SastScanRequestModel&quot;
+                  }
+               }
+            },
+            &quot;tags&quot;: [
+               &quot;SAST&quot;
+            ]
+         }
+      }
+   },
+   &quot;definitions&quot;: {
+      &quot;ApiGwScoreCardModel&quot;: {
+         &quot;additionalProperties&quot;: false,
+         &quot;properties&quot;: {
+            &quot;critical&quot;: {
+               &quot;type&quot;: &quot;string&quot;,
+               &quot;x-nullable&quot;: true
+            },
+            &quot;devOpsInfo&quot;: {
+               &quot;$ref&quot;: &quot;#/definitions/DevOpsInfoModel&quot;
+            },
+            &quot;failScan&quot;: {
+               &quot;readOnly&quot;: true,
+               &quot;type&quot;: &quot;boolean&quot;
+            },
+            &quot;high&quot;: {
+               &quot;type&quot;: &quot;string&quot;,
+               &quot;x-nullable&quot;: true
+            },
+            &quot;lastUpdated&quot;: {
+               &quot;type&quot;: &quot;string&quot;,
+               &quot;x-nullable&quot;: true
+            },
+            &quot;low&quot;: {
+               &quot;type&quot;: &quot;string&quot;,
+               &quot;x-nullable&quot;: true
+            },
+            &quot;medium&quot;: {
+               &quot;type&quot;: &quot;string&quot;,
+               &quot;x-nullable&quot;: true
+            },
+            &quot;reqId&quot;: {
+               &quot;type&quot;: &quot;string&quot;,
+               &quot;x-nullable&quot;: true
+            },
+            &quot;scanRequestInfo&quot;: {
+               &quot;$ref&quot;: &quot;#/definitions/ScanRequestInfoModel&quot;
+            },
+            &quot;scanType&quot;: {
+               &quot;type&quot;: &quot;string&quot;,
+               &quot;x-nullable&quot;: true
+            }
+         },
+         &quot;type&quot;: &quot;object&quot;
+      },
+      &quot;AppIdModel&quot;: {
+         &quot;additionalProperties&quot;: false,
+         &quot;properties&quot;: {
+            &quot;idType&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;value&quot;: {
+               &quot;pattern&quot;: &quot;(APPSVC)\\d{6}&quot;,
+               &quot;type&quot;: &quot;string&quot;
+            }
+         },
+         &quot;required&quot;: [
+            &quot;idType&quot;,
+            &quot;value&quot;
+         ],
+         &quot;type&quot;: &quot;object&quot;
+      },
+      &quot;AppScoreCardModel&quot;: {
+         &quot;additionalProperties&quot;: false,
+         &quot;properties&quot;: {
+            &quot;appId&quot;: {
+               &quot;type&quot;: &quot;string&quot;,
+               &quot;x-nullable&quot;: true
+            },
+            &quot;critical&quot;: {
+               &quot;type&quot;: &quot;string&quot;,
+               &quot;x-nullable&quot;: true
+            },
+            &quot;high&quot;: {
+               &quot;type&quot;: &quot;string&quot;,
+               &quot;x-nullable&quot;: true
+            },
+            &quot;lastUpdated&quot;: {
+               &quot;type&quot;: &quot;string&quot;,
+               &quot;x-nullable&quot;: true
+            },
+            &quot;low&quot;: {
+               &quot;type&quot;: &quot;string&quot;,
+               &quot;x-nullable&quot;: true
+            },
+            &quot;medium&quot;: {
+               &quot;type&quot;: &quot;string&quot;,
+               &quot;x-nullable&quot;: true
+            }
+         },
+         &quot;type&quot;: &quot;object&quot;
+      },
+      &quot;ApplicationInfoModel&quot;: {
+         &quot;additionalProperties&quot;: false,
+         &quot;properties&quot;: {
+            &quot;tags&quot;: {
+               &quot;type&quot;: &quot;string&quot;,
+               &quot;x-nullable&quot;: true
+            },
+            &quot;appIds&quot;: {
+               &quot;items&quot;: {
+                  &quot;$ref&quot;: &quot;#/definitions/AppIdModel&quot;
+               },
+               &quot;type&quot;: &quot;array&quot;
+            },
+            &quot;customTags&quot;: {
+               &quot;type&quot;: &quot;string&quot;,
+               &quot;x-nullable&quot;: true
+            },
+            &quot;name&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;type&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            }
+         },
+         &quot;required&quot;: [
+            &quot;appIds&quot;,
+            &quot;name&quot;,
+            &quot;type&quot;
+         ],
+         &quot;type&quot;: &quot;object&quot;
+      },
+      &quot;ApplicationModel&quot;: {
+         &quot;additionalProperties&quot;: false,
+         &quot;properties&quot;: {
+            &quot;tags&quot;: {
+               &quot;type&quot;: &quot;string&quot;,
+               &quot;x-nullable&quot;: true
+            },
+            &quot;appIds&quot;: {
+               &quot;items&quot;: {
+                  &quot;$ref&quot;: &quot;#/definitions/AppIdModel&quot;
+               },
+               &quot;type&quot;: &quot;array&quot;
+            },
+            &quot;businessCriticality&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;customTags&quot;: {
+               &quot;pattern&quot;: &quot;^([A-Za-z0-9_]+):(\\d+)(,([A-Za-z0-9_]+):(\\d+))*$&quot;,
+               &quot;type&quot;: &quot;string&quot;,
+               &quot;x-nullable&quot;: true
+            },
+            &quot;description&quot;: {
+               &quot;maxLength&quot;: 150,
+               &quot;minLength&quot;: 50,
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;enableDast&quot;: {
+               &quot;default&quot;: false,
+               &quot;type&quot;: &quot;boolean&quot;
+            },
+            &quot;id&quot;: {
+               &quot;readOnly&quot;: true,
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;message&quot;: {
+               &quot;type&quot;: &quot;string&quot;,
+               &quot;x-nullable&quot;: true
+            },
+            &quot;name&quot;: {
+               &quot;maxLength&quot;: 100,
+               &quot;minLength&quot;: 10,
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;riskClass&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;secApiProfiles&quot;: {
+               &quot;items&quot;: {
+                  &quot;$ref&quot;: &quot;#/definitions/SecApiInternalToolBasedProfile&quot;
+               },
+               &quot;type&quot;: &quot;array&quot;,
+               &quot;x-nullable&quot;: true
+            },
+            &quot;sourceCodeRepoUrl&quot;: {
+               &quot;pattern&quot;: &quot;^(https?:\\/\\/(?:www\\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\\.[^\\s]{2,}|www\\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\\.[^\\s]{2,}|https?:\\/\\/(?:www\\.|(?!www))[a-zA-Z0-9@]+\\.[^\\s]{2,}|www\\.[a-zA-Z0-9]+\\.[^\\s]{2,})$&quot;,
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;teamProfile&quot;: {
+               &quot;items&quot;: {
+                  &quot;$ref&quot;: &quot;#/definitions/TeamProfileModel&quot;
+               },
+               &quot;type&quot;: &quot;array&quot;
+            },
+            &quot;type&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;workerMessages&quot;: {
+               &quot;items&quot;: {
+                  &quot;$ref&quot;: &quot;#/definitions/WorkerMessages&quot;
+               },
+               &quot;type&quot;: &quot;array&quot;,
+               &quot;x-nullable&quot;: true
+            }
+         },
+         &quot;required&quot;: [
+            &quot;appIds&quot;,
+            &quot;businessCriticality&quot;,
+            &quot;description&quot;,
+            &quot;enableDast&quot;,
+            &quot;id&quot;,
+            &quot;name&quot;,
+            &quot;riskClass&quot;,
+            &quot;sourceCodeRepoUrl&quot;,
+            &quot;teamProfile&quot;,
+            &quot;type&quot;
+         ],
+         &quot;type&quot;: &quot;object&quot;
+      },
+      &quot;ApplicationSearchUsingExternalAppIdsModel&quot;: {
+         &quot;additionalProperties&quot;: false,
+         &quot;properties&quot;: {
+            &quot;appIds&quot;: {
+               &quot;items&quot;: {
+                  &quot;$ref&quot;: &quot;#/definitions/AppIdModel&quot;
+               },
+               &quot;type&quot;: &quot;array&quot;
+            }
+         },
+         &quot;required&quot;: [
+            &quot;appIds&quot;
+         ],
+         &quot;type&quot;: &quot;object&quot;
+      },
+      &quot;ApplicationUpdateModel&quot;: {
+         &quot;additionalProperties&quot;: false,
+         &quot;properties&quot;: {
+            &quot;tags&quot;: {
+               &quot;type&quot;: &quot;string&quot;,
+               &quot;x-nullable&quot;: true
+            },
+            &quot;appIds&quot;: {
+               &quot;items&quot;: {
+                  &quot;$ref&quot;: &quot;#/definitions/AppIdModel&quot;
+               },
+               &quot;type&quot;: &quot;array&quot;
+            },
+            &quot;businessCriticality&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;customTags&quot;: {
+               &quot;pattern&quot;: &quot;^([A-Za-z0-9_]+):(\\d+)(,([A-Za-z0-9_]+):(\\d+))*$&quot;,
+               &quot;type&quot;: &quot;string&quot;,
+               &quot;x-nullable&quot;: true
+            },
+            &quot;description&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;name&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;riskClass&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;secApiProfiles&quot;: {
+               &quot;items&quot;: {
+                  &quot;$ref&quot;: &quot;#/definitions/SecApiInternalToolBasedProfile&quot;
+               },
+               &quot;type&quot;: &quot;array&quot;
+            },
+            &quot;sourceCodeRepoUrl&quot;: {
+               &quot;pattern&quot;: &quot;^(https?:\\/\\/(?:www\\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\\.[^\\s]{2,}|www\\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\\.[^\\s]{2,}|https?:\\/\\/(?:www\\.|(?!www))[a-zA-Z0-9@]+\\.[^\\s]{2,}|www\\.[a-zA-Z0-9]+\\.[^\\s]{2,})&quot;,
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;teamProfile&quot;: {
+               &quot;items&quot;: {
+                  &quot;$ref&quot;: &quot;#/definitions/TeamProfileModel&quot;
+               },
+               &quot;type&quot;: &quot;array&quot;
+            },
+            &quot;type&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            }
+         },
+         &quot;required&quot;: [
+            &quot;appIds&quot;,
+            &quot;businessCriticality&quot;,
+            &quot;description&quot;,
+            &quot;name&quot;,
+            &quot;riskClass&quot;,
+            &quot;secApiProfiles&quot;,
+            &quot;sourceCodeRepoUrl&quot;,
+            &quot;teamProfile&quot;,
+            &quot;type&quot;
+         ],
+         &quot;type&quot;: &quot;object&quot;
+      },
+      &quot;BuildInfoModel&quot;: {
+         &quot;additionalProperties&quot;: false,
+         &quot;properties&quot;: {
+            &quot;buildDefinitionName&quot;: {
+               &quot;maxLength&quot;: 40,
+               &quot;minLength&quot;: 2,
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;buildId&quot;: {
+               &quot;maxLength&quot;: 40,
+               &quot;minLength&quot;: 1,
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;buildName&quot;: {
+               &quot;maxLength&quot;: 40,
+               &quot;minLength&quot;: 2,
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;buildReason&quot;: {
+               &quot;maxLength&quot;: 40,
+               &quot;minLength&quot;: 2,
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;buildRepositoryID&quot;: {
+               &quot;maxLength&quot;: 40,
+               &quot;minLength&quot;: 1,
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;buildRepositoryName&quot;: {
+               &quot;maxLength&quot;: 100,
+               &quot;minLength&quot;: 3,
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;buildSourceBranch&quot;: {
+               &quot;pattern&quot;: &quot;^refs\\/heads\\/([\\w-]+.){1,3}$&quot;,
+               &quot;type&quot;: &quot;string&quot;
+            }
+         },
+         &quot;required&quot;: [
+            &quot;buildDefinitionName&quot;,
+            &quot;buildId&quot;,
+            &quot;buildName&quot;,
+            &quot;buildReason&quot;,
+            &quot;buildRepositoryID&quot;,
+            &quot;buildRepositoryName&quot;,
+            &quot;buildSourceBranch&quot;
+         ],
+         &quot;type&quot;: &quot;object&quot;
+      },
+      &quot;CxTeamModel&quot;: {
+         &quot;additionalProperties&quot;: false,
+         &quot;properties&quot;: {
+            &quot;id&quot;: {
+               &quot;type&quot;: &quot;string&quot;,
+               &quot;x-nullable&quot;: true
+            },
+            &quot;name&quot;: {
+               &quot;type&quot;: &quot;string&quot;,
+               &quot;x-nullable&quot;: true
+            }
+         },
+         &quot;type&quot;: &quot;object&quot;
+      },
+      &quot;DastApplicationInfoModel&quot;: {
+         &quot;additionalProperties&quot;: false,
+         &quot;properties&quot;: {
+            &quot;additionalApplicationUrls&quot;: {
+               &quot;items&quot;: {
+                  &quot;type&quot;: &quot;string&quot;
+               },
+               &quot;type&quot;: &quot;array&quot;,
+               &quot;x-nullable&quot;: true
+            },
+            &quot;applicationUrl&quot;: {
+               &quot;pattern&quot;: &quot;(^(?:https:\\/\\/)[\\w-]+[\\w.-]+(?:\\.[\\w\\.-]+)+[\\w\\-\\._~:/?#[\\]@!\\$&amp;&apos;\\(\\)\\*\\+,;=.]+$)&quot;,
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;requiresAuthentication&quot;: {
+               &quot;type&quot;: &quot;boolean&quot;
+            }
+         },
+         &quot;required&quot;: [
+            &quot;applicationUrl&quot;,
+            &quot;requiresAuthentication&quot;
+         ],
+         &quot;type&quot;: &quot;object&quot;
+      },
+      &quot;DastScanRequestModel&quot;: {
+         &quot;additionalProperties&quot;: false,
+         &quot;properties&quot;: {
+            &quot;additionalApplicationUrls&quot;: {
+               &quot;items&quot;: {
+                  &quot;type&quot;: &quot;string&quot;
+               },
+               &quot;type&quot;: &quot;array&quot;,
+               &quot;x-nullable&quot;: true
+            },
+            &quot;appId&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;appScanJobId&quot;: {
+               &quot;type&quot;: &quot;string&quot;,
+               &quot;x-nullable&quot;: true
+            },
+            &quot;appScanProjectId&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;applicationUrl&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;id&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;jsonReport&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;lastUpdatedDateTime&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;message&quot;: {
+               &quot;type&quot;: &quot;string&quot;,
+               &quot;x-nullable&quot;: true
+            },
+            &quot;pdfReport&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;requiresAuthentication&quot;: {
+               &quot;type&quot;: &quot;boolean&quot;
+            },
+            &quot;scoreCard&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;status&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;submitedDateTime&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;userName&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;xmlReport&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            }
+         },
+         &quot;required&quot;: [
+            &quot;appId&quot;,
+            &quot;applicationUrl&quot;,
+            &quot;appScanProjectId&quot;,
+            &quot;id&quot;,
+            &quot;jsonReport&quot;,
+            &quot;lastUpdatedDateTime&quot;,
+            &quot;pdfReport&quot;,
+            &quot;requiresAuthentication&quot;,
+            &quot;scoreCard&quot;,
+            &quot;status&quot;,
+            &quot;submitedDateTime&quot;,
+            &quot;userName&quot;,
+            &quot;xmlReport&quot;
+         ],
+         &quot;type&quot;: &quot;object&quot;
+      },
+      &quot;DevOpsInfoModel&quot;: {
+         &quot;additionalProperties&quot;: false,
+         &quot;properties&quot;: {
+            &quot;buildInfo&quot;: {
+               &quot;$ref&quot;: &quot;#/definitions/BuildInfoModel&quot;
+            },
+            &quot;intiatingSource&quot;: {
+               &quot;maxLength&quot;: 40,
+               &quot;minLength&quot;: 2,
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;releaseInfo&quot;: {
+               &quot;$ref&quot;: &quot;#/definitions/ReleaseInfoModel&quot;
+            },
+            &quot;teamProjectId&quot;: {
+               &quot;maxLength&quot;: 40,
+               &quot;minLength&quot;: 5,
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;teamProjectName&quot;: {
+               &quot;maxLength&quot;: 40,
+               &quot;minLength&quot;: 2,
+               &quot;type&quot;: &quot;string&quot;
+            }
+         },
+         &quot;required&quot;: [
+            &quot;intiatingSource&quot;,
+            &quot;teamProjectId&quot;,
+            &quot;teamProjectName&quot;
+         ],
+         &quot;type&quot;: &quot;object&quot;
+      },
+      &quot;MobileScanRequestModel&quot;: {
+         &quot;additionalProperties&quot;: false,
+         &quot;properties&quot;: {
+            &quot;appId&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;fileId&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;id&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;jsonReport&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;lastUpdatedDateTime&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;message&quot;: {
+               &quot;type&quot;: &quot;string&quot;,
+               &quot;x-nullable&quot;: true
+            },
+            &quot;nowSecureProfileId&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;nowSecureScanId&quot;: {
+               &quot;type&quot;: &quot;string&quot;,
+               &quot;x-nullable&quot;: true
+            },
+            &quot;packageName&quot;: {
+               &quot;type&quot;: &quot;string&quot;,
+               &quot;x-nullable&quot;: true
+            },
+            &quot;platform&quot;: {
+               &quot;type&quot;: &quot;string&quot;,
+               &quot;x-nullable&quot;: true
+            },
+            &quot;scoreCard&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;status&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;submitedDateTime&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;userName&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            }
+         },
+         &quot;required&quot;: [
+            &quot;appId&quot;,
+            &quot;fileId&quot;,
+            &quot;id&quot;,
+            &quot;jsonReport&quot;,
+            &quot;lastUpdatedDateTime&quot;,
+            &quot;nowSecureProfileId&quot;,
+            &quot;scoreCard&quot;,
+            &quot;status&quot;,
+            &quot;submitedDateTime&quot;,
+            &quot;userName&quot;
+         ],
+         &quot;type&quot;: &quot;object&quot;
+      },
+      &quot;OsaScanRequestModel&quot;: {
+         &quot;additionalProperties&quot;: false,
+         &quot;properties&quot;: {
+            &quot;appId&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;cxProjectId&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;cxScanID&quot;: {
+               &quot;type&quot;: &quot;string&quot;,
+               &quot;x-nullable&quot;: true
+            },
+            &quot;fileId&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;fileName&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;id&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;jsonReport&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;lastUpdatedDateTime&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;message&quot;: {
+               &quot;type&quot;: &quot;string&quot;,
+               &quot;x-nullable&quot;: true
+            },
+            &quot;pdfReport&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;scoreCard&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;status&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;submitedDateTime&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;userName&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            }
+         },
+         &quot;required&quot;: [
+            &quot;appId&quot;,
+            &quot;cxProjectId&quot;,
+            &quot;fileId&quot;,
+            &quot;fileName&quot;,
+            &quot;id&quot;,
+            &quot;jsonReport&quot;,
+            &quot;lastUpdatedDateTime&quot;,
+            &quot;pdfReport&quot;,
+            &quot;scoreCard&quot;,
+            &quot;status&quot;,
+            &quot;submitedDateTime&quot;,
+            &quot;userName&quot;
+         ],
+         &quot;type&quot;: &quot;object&quot;
+      },
+      &quot;ReleaseInfoModel&quot;: {
+         &quot;additionalProperties&quot;: false,
+         &quot;properties&quot;: {
+            &quot;releaseDefinitionId&quot;: {
+               &quot;maxLength&quot;: 40,
+               &quot;minLength&quot;: 1,
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;releaseDefinitionName&quot;: {
+               &quot;maxLength&quot;: 40,
+               &quot;minLength&quot;: 2,
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;releaseEnvironmentName&quot;: {
+               &quot;maxLength&quot;: 40,
+               &quot;minLength&quot;: 2,
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;releaseName&quot;: {
+               &quot;maxLength&quot;: 40,
+               &quot;minLength&quot;: 2,
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;releaseReason&quot;: {
+               &quot;maxLength&quot;: 40,
+               &quot;minLength&quot;: 2,
+               &quot;type&quot;: &quot;string&quot;
+            }
+         },
+         &quot;required&quot;: [
+            &quot;releaseDefinitionId&quot;,
+            &quot;releaseDefinitionName&quot;,
+            &quot;releaseEnvironmentName&quot;,
+            &quot;releaseName&quot;,
+            &quot;releaseReason&quot;
+         ],
+         &quot;type&quot;: &quot;object&quot;
+      },
+      &quot;SastApplicationInfoModel&quot;: {
+         &quot;additionalProperties&quot;: false,
+         &quot;properties&quot;: {
+            &quot;devOpsInfo&quot;: {
+               &quot;$ref&quot;: &quot;#/definitions/DevOpsInfoModel&quot;
+            },
+            &quot;force&quot;: {
+               &quot;default&quot;: false,
+               &quot;type&quot;: &quot;boolean&quot;
+            },
+            &quot;incremental&quot;: {
+               &quot;default&quot;: false,
+               &quot;type&quot;: &quot;boolean&quot;
+            },
+            &quot;repoBranchToScan&quot;: {
+               &quot;pattern&quot;: &quot;^(refs)\\/heads\\/([\\w-]+.){1,3}$&quot;,
+               &quot;type&quot;: &quot;string&quot;
+            }
+         },
+         &quot;required&quot;: [
+            &quot;force&quot;,
+            &quot;incremental&quot;,
+            &quot;repoBranchToScan&quot;
+         ],
+         &quot;type&quot;: &quot;object&quot;
+      },
+      &quot;SastScanRequestModel&quot;: {
+         &quot;additionalProperties&quot;: false,
+         &quot;properties&quot;: {
+            &quot;appId&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;cxProjectId&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;cxRunId&quot;: {
+               &quot;format&quot;: &quot;int64&quot;,
+               &quot;type&quot;: &quot;integer&quot;
+            },
+            &quot;devOpsInfo&quot;: {
+               &quot;$ref&quot;: &quot;#/definitions/DevOpsInfoModel&quot;
+            },
+            &quot;force&quot;: {
+               &quot;type&quot;: &quot;boolean&quot;
+            },
+            &quot;id&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;incremental&quot;: {
+               &quot;type&quot;: &quot;boolean&quot;
+            },
+            &quot;jsonReport&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;lastUpdatedDateTime&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;message&quot;: {
+               &quot;type&quot;: &quot;string&quot;,
+               &quot;x-nullable&quot;: true
+            },
+            &quot;pdfReport&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;repoBranchToScan&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;scoreCard&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;sourceCodeRepoUrl&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;status&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;submitedDateTime&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;userName&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;xmlReport&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            }
+         },
+         &quot;required&quot;: [
+            &quot;appId&quot;,
+            &quot;cxProjectId&quot;,
+            &quot;id&quot;,
+            &quot;jsonReport&quot;,
+            &quot;lastUpdatedDateTime&quot;,
+            &quot;pdfReport&quot;,
+            &quot;repoBranchToScan&quot;,
+            &quot;scoreCard&quot;,
+            &quot;sourceCodeRepoUrl&quot;,
+            &quot;status&quot;,
+            &quot;submitedDateTime&quot;,
+            &quot;userName&quot;,
+            &quot;xmlReport&quot;
+         ],
+         &quot;type&quot;: &quot;object&quot;
+      },
+      &quot;ScanRequestInfoModel&quot;: {
+         &quot;additionalProperties&quot;: false,
+         &quot;properties&quot;: {
+            &quot;devOpsInfo&quot;: {
+               &quot;$ref&quot;: &quot;#/definitions/DevOpsInfoModel&quot;
+            }
+         },
+         &quot;type&quot;: &quot;object&quot;
+      },
+      &quot;ScanScoreCardModel&quot;: {
+         &quot;additionalProperties&quot;: false,
+         &quot;properties&quot;: {
+            &quot;critical&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;high&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;lastUpdated&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;low&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;medium&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;message&quot;: {
+               &quot;type&quot;: &quot;string&quot;,
+               &quot;x-nullable&quot;: true
+            },
+            &quot;reqId&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;scanType&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            }
+         },
+         &quot;required&quot;: [
+            &quot;critical&quot;,
+            &quot;high&quot;,
+            &quot;lastUpdated&quot;,
+            &quot;low&quot;,
+            &quot;medium&quot;,
+            &quot;reqId&quot;,
+            &quot;scanType&quot;
+         ],
+         &quot;type&quot;: &quot;object&quot;
+      },
+      &quot;SearchCriteriaModel&quot;: {
+         &quot;additionalProperties&quot;: false,
+         &quot;properties&quot;: {
+            &quot;key&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;value&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            }
+         },
+         &quot;required&quot;: [
+            &quot;key&quot;,
+            &quot;value&quot;
+         ],
+         &quot;type&quot;: &quot;object&quot;
+      },
+      &quot;SecApiAggScoreModel&quot;: {
+         &quot;additionalProperties&quot;: false,
+         &quot;properties&quot;: {
+            &quot;aggSecApiScore&quot;: {
+               &quot;type&quot;: &quot;string&quot;,
+               &quot;x-nullable&quot;: true
+            },
+            &quot;critical&quot;: {
+               &quot;type&quot;: &quot;string&quot;,
+               &quot;x-nullable&quot;: true
+            },
+            &quot;high&quot;: {
+               &quot;type&quot;: &quot;string&quot;,
+               &quot;x-nullable&quot;: true
+            },
+            &quot;low&quot;: {
+               &quot;type&quot;: &quot;string&quot;,
+               &quot;x-nullable&quot;: true
+            },
+            &quot;medium&quot;: {
+               &quot;type&quot;: &quot;string&quot;,
+               &quot;x-nullable&quot;: true
+            },
+            &quot;scanResults&quot;: {
+               &quot;items&quot;: {
+                  &quot;$ref&quot;: &quot;#/definitions/AppScoreCardModel&quot;
+               },
+               &quot;type&quot;: &quot;array&quot;,
+               &quot;x-nullable&quot;: true
+            },
+            &quot;secApiGrade&quot;: {
+               &quot;type&quot;: &quot;string&quot;,
+               &quot;x-nullable&quot;: true
+            }
+         },
+         &quot;type&quot;: &quot;object&quot;
+      },
+      &quot;SecApiInternalToolBasedProfile&quot;: {
+         &quot;additionalProperties&quot;: false,
+         &quot;properties&quot;: {
+            &quot;idType&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;idValue&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            }
+         },
+         &quot;required&quot;: [
+            &quot;idType&quot;,
+            &quot;idValue&quot;
+         ],
+         &quot;type&quot;: &quot;object&quot;
+      },
+      &quot;SecApiScoreHistoryWithAppInfoModel&quot;: {
+         &quot;additionalProperties&quot;: false,
+         &quot;properties&quot;: {
+            &quot;applicationInfo&quot;: {
+               &quot;$ref&quot;: &quot;#/definitions/ApplicationInfoModel&quot;
+            },
+            &quot;id&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;scanHistoryResults&quot;: {
+               &quot;items&quot;: {
+                  &quot;$ref&quot;: &quot;#/definitions/SecApiScoreModel&quot;
+               },
+               &quot;type&quot;: &quot;array&quot;
+            }
+         },
+         &quot;required&quot;: [
+            &quot;applicationInfo&quot;,
+            &quot;id&quot;,
+            &quot;scanHistoryResults&quot;
+         ],
+         &quot;type&quot;: &quot;object&quot;
+      },
+      &quot;SecApiScoreModel&quot;: {
+         &quot;additionalProperties&quot;: false,
+         &quot;properties&quot;: {
+            &quot;critical&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;high&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;id&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;lastRefreshedAt&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;low&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;medium&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;scanRequestInfo&quot;: {
+               &quot;$ref&quot;: &quot;#/definitions/ScanRequestInfoModel&quot;
+            },
+            &quot;scanResults&quot;: {
+               &quot;items&quot;: {
+                  &quot;$ref&quot;: &quot;#/definitions/ScanScoreCardModel&quot;
+               },
+               &quot;type&quot;: &quot;array&quot;
+            },
+            &quot;secApiGrade&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;secApiScore&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            }
+         },
+         &quot;required&quot;: [
+            &quot;critical&quot;,
+            &quot;high&quot;,
+            &quot;id&quot;,
+            &quot;lastRefreshedAt&quot;,
+            &quot;low&quot;,
+            &quot;medium&quot;,
+            &quot;scanResults&quot;,
+            &quot;secApiGrade&quot;,
+            &quot;secApiScore&quot;
+         ],
+         &quot;type&quot;: &quot;object&quot;
+      },
+      &quot;SecApiScoreWithAppInfoModel&quot;: {
+         &quot;additionalProperties&quot;: false,
+         &quot;properties&quot;: {
+            &quot;applicationInfo&quot;: {
+               &quot;$ref&quot;: &quot;#/definitions/ApplicationInfoModel&quot;
+            },
+            &quot;critical&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;high&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;id&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;lastRefreshedAt&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;low&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;medium&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;scanRequestInfo&quot;: {
+               &quot;$ref&quot;: &quot;#/definitions/ScanRequestInfoModel&quot;
+            },
+            &quot;scanResults&quot;: {
+               &quot;items&quot;: {
+                  &quot;$ref&quot;: &quot;#/definitions/ScanScoreCardModel&quot;
+               },
+               &quot;type&quot;: &quot;array&quot;
+            },
+            &quot;secApiGrade&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;secApiScore&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            }
+         },
+         &quot;required&quot;: [
+            &quot;applicationInfo&quot;,
+            &quot;critical&quot;,
+            &quot;high&quot;,
+            &quot;id&quot;,
+            &quot;lastRefreshedAt&quot;,
+            &quot;low&quot;,
+            &quot;medium&quot;,
+            &quot;scanResults&quot;,
+            &quot;secApiGrade&quot;,
+            &quot;secApiScore&quot;
+         ],
+         &quot;type&quot;: &quot;object&quot;
+      },
+      &quot;TeamProfileModel&quot;: {
+         &quot;additionalProperties&quot;: false,
+         &quot;properties&quot;: {
+            &quot;memberEmailIds&quot;: {
+               &quot;pattern&quot;: &quot;^\\w+([-+.&apos;]\\w+)*@humana.com+(,\\s*\\w+([-+.&apos;]\\w+)*@humana.com)*$&quot;,
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;role&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            }
+         },
+         &quot;required&quot;: [
+            &quot;memberEmailIds&quot;,
+            &quot;role&quot;
+         ],
+         &quot;type&quot;: &quot;object&quot;
+      },
+      &quot;WorkerMessages&quot;: {
+         &quot;additionalProperties&quot;: false,
+         &quot;properties&quot;: {
+            &quot;message&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;workerType&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            }
+         },
+         &quot;required&quot;: [
+            &quot;message&quot;,
+            &quot;workerType&quot;
+         ],
+         &quot;type&quot;: &quot;object&quot;
+      }
+   },
+   &quot;securityDefinitions&quot;: {
+      &quot;X-Api-Key&quot;: {
+         &quot;description&quot;: &quot;Sec API Key is needed to access endpoints. You can get your key from DevSecOps Portal. You should provide your SecApi key in Header of your request. X-Api-Key : YOUR_API_KEY&quot;,
+         &quot;in&quot;: &quot;header&quot;,
+         &quot;name&quot;: &quot;X-Api-Key&quot;,
+         &quot;type&quot;: &quot;apiKey&quot;
+      }
+   },
+   &quot;security&quot;: [
+      {
+         &quot;X-Api-Key&quot;: []
+      }
+   ],
+   &quot;x-components&quot;: {}
+}</schema>
+    <schemaType>OpenApi</schemaType>
+    <status>Complete</status>
+</ExternalServiceRegistration>

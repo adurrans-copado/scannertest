@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExternalServiceRegistration xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Grafeas API</description>
+    <label>GrafeasAPI</label>
+    <namedCredential>Grafeas_API</namedCredential>
+    <schema>{
+   &quot;swagger&quot;: &quot;2.0&quot;,
+   &quot;info&quot;: {
+      &quot;description&quot;: &quot;This end point is an Azure function that takes in a JSON in the request body and pushes it to a service bus topic for downstream consumption. It validates the request both using a function key and the Basic Authorization header.&quot;,
+      &quot;version&quot;: &quot;1.0.0&quot;,
+      &quot;title&quot;: &quot;HPE Copado Intake&quot;
+   },
+   &quot;host&quot;: &quot;hpe-copado-trigger-dev.azurewebsites.net&quot;,
+   &quot;basePath&quot;: &quot;/api&quot;,
+   &quot;tags&quot;: [
+      {
+         &quot;name&quot;: &quot;pushToServiceBus&quot;,
+         &quot;description&quot;: &quot;Pushes input to ServiceBus to get entered into datastore.&quot;
+      }
+   ],
+   &quot;schemes&quot;: [
+      &quot;https&quot;
+   ],
+   &quot;securityDefinitions&quot;: {
+      &quot;basicAuth&quot;: {
+         &quot;type&quot;: &quot;basic&quot;
+      }
+   },
+   &quot;security&quot;: [
+      {
+         &quot;basicAuth&quot;: []
+      }
+   ],
+   &quot;paths&quot;: {
+      &quot;/pushToServiceBus&quot;: {
+         &quot;post&quot;: {
+            &quot;tags&quot;: [
+               &quot;pushToServiceBus&quot;
+            ],
+            &quot;summary&quot;: &quot;JSON body in request gets written to an Azure Service Bus Topic.&quot;,
+            &quot;description&quot;: &quot;&quot;,
+            &quot;consumes&quot;: [
+               &quot;application/json&quot;
+            ],
+            &quot;produces&quot;: [
+               &quot;application/json&quot;
+            ],
+            &quot;parameters&quot;: [
+               {
+                  &quot;in&quot;: &quot;query&quot;,
+                  &quot;name&quot;: &quot;code&quot;,
+                  &quot;type&quot;: &quot;string&quot;,
+                  &quot;required&quot;: true
+               },
+               {
+                  &quot;in&quot;: &quot;body&quot;,
+                  &quot;name&quot;: &quot;body&quot;,
+                  &quot;description&quot;: &quot;&quot;,
+                  &quot;required&quot;: true,
+                  &quot;schema&quot;: {
+                     &quot;$ref&quot;: &quot;#/definitions/CopadoCodeCov&quot;
+                  }
+               }
+            ],
+            &quot;responses&quot;: {
+               &quot;200&quot;: {
+                  &quot;description&quot;: &quot;Successful transmission.&quot;,
+                  &quot;schema&quot;: {
+                     &quot;$ref&quot;: &quot;#/definitions/Response&quot;
+                  }
+               },
+               &quot;401&quot;: {
+                  &quot;description&quot;: &quot;Unauthorized access.&quot;
+               },
+               &quot;500&quot;: {
+                  &quot;description&quot;: &quot;Unexpected Error&quot;
+               }
+            }
+         }
+      }
+   },
+   &quot;definitions&quot;: {
+      &quot;CopadoCodeCov&quot;: {
+         &quot;type&quot;: &quot;object&quot;,
+         &quot;properties&quot;: {
+            &quot;AppServiceId&quot;: {
+               &quot;type&quot;: &quot;string&quot;,
+               &quot;example&quot;: &quot;APPSVC123456&quot;
+            },
+            &quot;Kind&quot;: {
+               &quot;type&quot;: &quot;string&quot;,
+               &quot;example&quot;: &quot;CODEQUALITY&quot;
+            },
+            &quot;SourceSystemKey&quot;: {
+               &quot;type&quot;: &quot;object&quot;,
+               &quot;$ref&quot;: &quot;#/definitions/SourceSystemKey&quot;
+            }
+         }
+      },
+      &quot;SourceSystemKey&quot;: {
+         &quot;type&quot;: &quot;object&quot;,
+         &quot;properties&quot;: {
+            &quot;UniqueBuildArtifactId&quot;: {
+               &quot;type&quot;: &quot;string&quot;,
+               &quot;example&quot;: &quot;Copado Specific Unique String&quot;
+            },
+            &quot;CodeCoverage&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            }
+         }
+      },
+      &quot;Code&quot;: {
+         &quot;type&quot;: &quot;object&quot;,
+         &quot;properties&quot;: {
+            &quot;id&quot;: {
+               &quot;type&quot;: &quot;integer&quot;,
+               &quot;format&quot;: &quot;int64&quot;
+            },
+            &quot;name&quot;: {
+               &quot;type&quot;: &quot;string&quot;
+            }
+         }
+      },
+      &quot;Response&quot;: {
+         &quot;type&quot;: &quot;object&quot;,
+         &quot;properties&quot;: {
+            &quot;text&quot;: {
+               &quot;type&quot;: &quot;string&quot;,
+               &quot;description&quot;: &quot;This will contain &apos;OK&apos; or &apos;ERROR&apos; dependent on the action of the service.&quot;,
+               &quot;example&quot;: &quot;OK&quot;
+            }
+         }
+      }
+   }
+}</schema>
+    <schemaType>OpenApi</schemaType>
+    <status>Complete</status>
+</ExternalServiceRegistration>

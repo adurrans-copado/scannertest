@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>copado__User_Story__c$copado__User_Story_Title__c</field>
+    </columns>
+    <columns>
+        <field>copado__User_Story__c.copado__Deployment_Tasks__r$Name</field>
+    </columns>
+    <columns>
+        <field>copado__User_Story__c$copado__Environment__c</field>
+    </columns>
+    <columns>
+        <field>copado__User_Story__c.copado__Deployment_Tasks__r$copado__Perform_Manual_Task__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>copado__User_Story__c.copado__Deployment_Tasks__r$copado__Order__c</field>
+    </columns>
+    <description>User Stories with Deployment Tasks</description>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>copado__User_Story__c$Name</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>User Stories with Deployment Tasks</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>User_Stories_with_Deployment_Tasks__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>false</showGrandTotal>
+    <showSubTotals>false</showSubTotals>
+    <sortColumn>copado__User_Story__c.copado__Deployment_Tasks__r$copado__Order__c</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>copado__User_Story__c$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>
