@@ -9,11 +9,11 @@
         <value>user story SVMX Components</value>
     </caseValues>
     <fields>
-        <label><!-- test field 1 --></label>
+        <label></label>
         <name>test_field_1__c</name>
     </fields>
     <fields>
-        <label><!-- test field 2 --></label>
+        <label></label>
         <name>test_field_2__c</name>
     </fields>
     <startsWith>Consonant</startsWith>
