@@ -200,16 +200,6 @@
     <enableFeeds>true</enableFeeds>
     <externalSharingModel>Private</externalSharingModel>
     <fields>
-        <fullName>AD_My_Favorite_User_CF__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>This is my favorite user custom field! No joke!</description>
-        <externalId>false</externalId>
-        <inlineHelpText>Help Text Goes here man! ;)</inlineHelpText>
-        <label>My Favorite User CF</label>
-        <trackFeedHistory>false</trackFeedHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
         <fullName>ManagerId</fullName>
         <trackFeedHistory>true</trackFeedHistory>
         <type>Hierarchy</type>
