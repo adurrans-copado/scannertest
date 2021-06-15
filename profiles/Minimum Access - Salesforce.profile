@@ -126,6 +126,14 @@
         <visible>false</visible>
     </applicationVisibilities>
     <classAccesses>
+        <apexClass>HelloWorld</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>HelloWorldTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>InspectionServices</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -9705,16 +9713,6 @@
         <field>copado__User_Story__c.copado__userStory_reason__c</field>
         <readable>false</readable>
     </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>user_story_SVMX_Component__c.test_field_1__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>user_story_SVMX_Component__c.test_field_2__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
     <layoutAssignments>
         <layout>ContactPointAddress-Contact Point Address Layout</layout>
     </layoutAssignments>
@@ -9723,9 +9721,6 @@
     </layoutAssignments>
     <layoutAssignments>
         <layout>ContactPointPhone-Contact Point Phone Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>user_story_SVMX_Component__c-user story SVMX Component Layout</layout>
     </layoutAssignments>
     <pageAccesses>
         <apexPage>SelectInspectionPage</apexPage>
