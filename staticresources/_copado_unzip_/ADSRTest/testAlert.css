@@ -1,0 +1,17 @@
+/* testAlert CSS */
+/* notes... */ 
+html { margin: 0px; padding: 0px; }
+body { margin: 10px; }
+p { color: #0000FF; }
+div
+{
+    height: 300px;
+    width: 300px;
+    padding: 3px;
+    font-weight: bold;
+    font-family: Lucida;
+    background-image: url("abnb_tatw.png");
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    background-color: lightblue;
+}

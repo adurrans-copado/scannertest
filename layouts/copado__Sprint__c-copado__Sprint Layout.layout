@@ -79,9 +79,10 @@
                 <reportChartComponent>
                     <cacheData>true</cacheData>
                     <contextFilterableField>FK_CUSTENT_ID</contextFilterableField>
+                    <error>You can’t view the report chart because of an error. If the problem continues, contact salesforce.com Customer Support with as much information as you have, including the error code {0}, so that we can try to reproduce and fix the problem.</error>
                     <hideOnError>false</hideOnError>
                     <includeContext>true</includeContext>
-                    <reportName>User_Stories_by_Sprint</reportName>
+                    <reportName>00O4W000005ZahY</reportName>
                     <showTitle>false</showTitle>
                     <size>SMALL</size>
                 </reportChartComponent>
@@ -92,9 +93,10 @@
                 <reportChartComponent>
                     <cacheData>true</cacheData>
                     <contextFilterableField>FK_CUSTENT_ID</contextFilterableField>
+                    <error>You can’t view the report chart because of an error. If the problem continues, contact salesforce.com Customer Support with as much information as you have, including the error code {0}, so that we can try to reproduce and fix the problem.</error>
                     <hideOnError>false</hideOnError>
                     <includeContext>true</includeContext>
-                    <reportName>Sprint_Points_Summary</reportName>
+                    <reportName>00O4W000005ZahW</reportName>
                     <showTitle>false</showTitle>
                     <size>SMALL</size>
                 </reportChartComponent>
