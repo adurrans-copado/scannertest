@@ -128,8 +128,8 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <comment>Action override updated by Lightning App Builder during activation.</comment>
-        <content>copado__User_Story_Layout</content>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>AD_User_Story_Record_Page</content>
         <formFactor>Large</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
@@ -5112,22 +5112,6 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>copado__Feature__c</fullName>
-        <businessStatus>Hidden</businessStatus>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <deprecated>false</deprecated>
-        <externalId>false</externalId>
-        <label>Feature</label>
-        <referenceTo>copado__Copado_Feature__c</referenceTo>
-        <relationshipLabel>User Stories</relationshipLabel>
-        <relationshipName>User_Stories</relationshipName>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Lookup</type>
-    </fields>
-    <fields>
         <fullName>copado__Functional_Specifications__c</fullName>
         <deprecated>false</deprecated>
         <externalId>false</externalId>
@@ -5168,18 +5152,6 @@
         </valueSet>
     </fields>
     <fields>
-        <fullName>copado__Git_Repository__c</fullName>
-        <deprecated>false</deprecated>
-        <externalId>false</externalId>
-        <formula>copado__Project__r.copado__Deployment_Flow__r.copado__Git_Repository__c</formula>
-        <label>Git Repository</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>copado__Has_Apex_Code__c</fullName>
         <defaultValue>false</defaultValue>
         <deprecated>false</deprecated>
@@ -5187,17 +5159,6 @@
         <externalId>false</externalId>
         <inlineHelpText>Value automatically updated by Copado whenever there are Apex Classes added or committed in the User Story.</inlineHelpText>
         <label>Has Apex Code</label>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>copado__Is_Bundle__c</fullName>
-        <defaultValue>false</defaultValue>
-        <deprecated>false</deprecated>
-        <externalId>false</externalId>
-        <label>Is Bundle</label>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -6101,7 +6062,7 @@ IMAGE(&quot;/img/samples/color_yellow.gif&quot;, &quot;white&quot;, 15,
         <fullName>copado__Story_Points_Other__c</fullName>
         <deprecated>false</deprecated>
         <externalId>false</externalId>
-        <label>Planned Points</label>
+        <label>Story Points Other</label>
         <precision>3</precision>
         <required>false</required>
         <scale>0</scale>
@@ -6115,7 +6076,7 @@ IMAGE(&quot;/img/samples/color_yellow.gif&quot;, &quot;white&quot;, 15,
         <fullName>copado__Story_Points_SFDC__c</fullName>
         <deprecated>false</deprecated>
         <externalId>false</externalId>
-        <label>Actual Points</label>
+        <label>Story Points SFDC</label>
         <precision>3</precision>
         <required>false</required>
         <scale>0</scale>
@@ -6218,21 +6179,6 @@ IMAGE(&quot;/img/samples/color_yellow.gif&quot;, &quot;white&quot;, 15,
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>copado__US_Feature__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <deprecated>false</deprecated>
-        <externalId>false</externalId>
-        <label>Feature</label>
-        <referenceTo>copado__Application_Feature__c</referenceTo>
-        <relationshipLabel>User Stories</relationshipLabel>
-        <relationshipName>User_Stories</relationshipName>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Lookup</type>
-    </fields>
-    <fields>
         <fullName>copado__User_Story_Title__c</fullName>
         <deprecated>false</deprecated>
         <description>Short description of the User Story or requirement. Technical and non-technical team members should be able to understand the description.</description>
@@ -6328,15 +6274,17 @@ IMAGE(&quot;/img/samples/color_yellow.gif&quot;, &quot;white&quot;, 15,
         <fullName>copado__All</fullName>
         <columns>NAME</columns>
         <columns>copado__User_Story_Title__c</columns>
+        <columns>copado__userStory_Role__c</columns>
+        <columns>copado__userStory_need__c</columns>
+        <columns>copado__userStory_reason__c</columns>
+        <columns>copado__Story_Points_SFDC__c</columns>
+        <columns>copado__Story_Points_Other__c</columns>
         <columns>copado__Status__c</columns>
         <columns>copado__Project__c</columns>
+        <columns>copado__Epic__c</columns>
         <columns>copado__Sprint__c</columns>
-        <columns>copado__Org_Credential__c</columns>
-        <columns>LAST_UPDATE</columns>
-        <columns>copado__Exclude_From_CBM__c</columns>
-        <columns>copado__Stop_Indexing_Metadata__c</columns>
-        <columns>copado__Promote_Change__c</columns>
         <columns>copado__Release__c</columns>
+        <columns>LAST_UPDATE</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
@@ -7928,19 +7876,6 @@ IMAGE(&quot;/img/samples/color_yellow.gif&quot;, &quot;white&quot;, 15,
         <protected>false</protected>
         <requireRowSelection>false</requireRowSelection>
         <url>/apex/{!IF(CONTAINS($Action.copado__User_Story__c.New, &apos;copado__&apos;), &apos;copado__&apos;, &apos;&apos;)}QuickCreateUserStories?sid={!copado__Sprint__c.Id}</url>
-    </webLinks>
-    <webLinks>
-        <fullName>copado__Open_Org</fullName>
-        <availability>online</availability>
-        <description>Open the org speficied in the org credential for the US</description>
-        <displayType>button</displayType>
-        <encodingKey>UTF-8</encodingKey>
-        <height>600</height>
-        <linkType>url</linkType>
-        <masterLabel>Open Org</masterLabel>
-        <openType>sidebar</openType>
-        <protected>false</protected>
-        <url>/apex/{!IF(CONTAINS($Action.copado__User_Story__c.New, &apos;copado__&apos;), &apos;copado__&apos;, &apos;&apos;)}ScratchOrgOpen?id={! copado__User_Story__c.copado__Org_CredentialId__c }</url>
     </webLinks>
     <webLinks>
         <fullName>copado__Perform_Validation</fullName>

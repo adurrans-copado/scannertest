@@ -306,6 +306,10 @@ var conversionFunc = conversionFunc || {},
                         );
                     }
 
+                    if ((cssTop = $copado('.CodeMirror-merge-copy').css('top'))) {
+                        $copado('.CodeMirror-merge-copy').css('top', parseInt(cssTop.slice(0, -2)) + 19);
+                    }
+
                     var gapSize =
                         parseInt(
                             $copado('.CodeMirror-merge-gap')

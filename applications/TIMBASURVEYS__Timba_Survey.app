@@ -5,7 +5,6 @@
     <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
     <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
     <label>Timba Surveys</label>
-    <logo>TIMBASURVEYS__TimbaSurveysData/TIMBASURVEYS__TimbaSurveyAppLogo.gif</logo>
     <tabs>TIMBASURVEYS__Timba_Surveys</tabs>
     <tabs>TIMBASURVEYS__TimbaSurveys_CP</tabs>
     <tabs>TIMBASURVEYS__Recipient__c</tabs>

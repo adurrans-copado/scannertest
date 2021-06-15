@@ -21,25 +21,38 @@
                 <field>copado__Severity__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>copado__Risk_Details__c</field>
+                <behavior>Required</behavior>
+                <field>copado__Action__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>copado__Active__c</field>
+                <field>OwnerId</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Required</behavior>
-                <field>copado__Action__c</field>
+                <behavior>Edit</behavior>
+                <field>copado__Active__c</field>
+            </layoutItems>
+        </layoutColumns>
+        <style>TwoColumnsTopToBottom</style>
+    </layoutSections>
+    <layoutSections>
+        <customLabel>true</customLabel>
+        <detailHeading>false</detailHeading>
+        <editHeading>false</editHeading>
+        <label>New Section</label>
+        <layoutColumns>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>copado__Risk_Details__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>copado__Error_Message__c</field>
             </layoutItems>
         </layoutColumns>
-        <style>TwoColumnsTopToBottom</style>
+        <style>OneColumn</style>
     </layoutSections>
     <layoutSections>
         <customLabel>true</customLabel>
@@ -105,8 +118,13 @@
         </platformActionListItems>
     </platformActionList>
     <relatedLists>
+        <excludeButtons>New</excludeButtons>
         <fields>NAME</fields>
-        <relatedList>copado__Compliance_Rule_Group_Item__c.copado__Compliance_Rule__c</relatedList>
+        <fields>copado__Criteria__c</fields>
+        <fields>copado__Order__c</fields>
+        <relatedList>copado__Compliance_Rule_Criteria__c.copado__Compliance_Rule__c</relatedList>
+        <sortField>copado__Order__c</sortField>
+        <sortOrder>Asc</sortOrder>
     </relatedLists>
     <relatedLists>
         <excludeButtons>New</excludeButtons>
@@ -127,7 +145,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h4W00000YRyR3</masterLabel>
+        <masterLabel>00h0Y000004yi89</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

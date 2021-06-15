@@ -144,7 +144,6 @@
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
     <deprecated>false</deprecated>
-    <description>Org authenticated via OAuth that you will need in order to schedule a deployment, run or schedule a Git Snapshot, run or schedule Apex test for an Org and to add more Org credentials in the same Salesforce server (pod).</description>
     <enableActivities>false</enableActivities>
     <enableBulkApi>true</enableBulkApi>
     <enableEnhancedLookup>false</enableEnhancedLookup>
@@ -770,6 +769,7 @@ IMAGE(&apos;/resource/1516617568000/&apos;+IF($Setup.copado__Settings__c.copado_
 
 ) 
 ) 
+
 )</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Type Icon</label>

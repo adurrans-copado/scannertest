@@ -190,17 +190,13 @@
         <sortField>NAME</sortField>
         <sortOrder>Desc</sortOrder>
     </relatedLists>
-    <relatedLists>
-        <fields>NAME</fields>
-        <relatedList>copado__Result__c.copado__Deployment__c</relatedList>
-    </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>true</showHighlightsPanel>
     <showInteractionLogPanel>true</showInteractionLogPanel>
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h4W00000YRyRJ</masterLabel>
+        <masterLabel>00h0Y000003vn2t</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

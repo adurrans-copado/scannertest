@@ -17,10 +17,6 @@
         <name>copado__Pipeline_Manager</name>
     </fieldSets>
     <fields>
-        <label><!-- GLAPI Checks --></label>
-        <name>GLAPI_Checks__c</name>
-    </fields>
-    <fields>
         <label><!-- Back Promotion --></label>
         <name>copado__Back_Promotion__c</name>
     </fields>

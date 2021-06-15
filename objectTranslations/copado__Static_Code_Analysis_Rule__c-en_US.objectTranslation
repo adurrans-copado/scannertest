@@ -97,6 +97,10 @@
             <translation><!-- AvoidDirectAccessTriggerMap --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>AvoidDmlStatementsInLoops</masterLabel>
+            <translation><!-- AvoidDmlStatementsInLoops --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>AvoidGlobalModifier</masterLabel>
             <translation><!-- AvoidGlobalModifier --></translation>
         </picklistValues>
@@ -111,6 +115,10 @@
         <picklistValues>
             <masterLabel>AvoidNonExistentAnnotations</masterLabel>
             <translation><!-- AvoidNonExistentAnnotations --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AvoidSoqlInLoops</masterLabel>
+            <translation><!-- AvoidSoqlInLoops --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>ClassNamingConventions</masterLabel>
@@ -183,10 +191,6 @@
         <picklistValues>
             <masterLabel>NcssTypeCount</masterLabel>
             <translation><!-- NcssTypeCount --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>OperationWithLimitsInLoop</masterLabel>
-            <translation><!-- OperationWithLimitsInLoop --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>StdCyclomaticComplexity</masterLabel>

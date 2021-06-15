@@ -210,7 +210,7 @@
         <deprecated>false</deprecated>
         <externalId>false</externalId>
         <inlineHelpText>Hashing the Formula will replace the original value with a unique, fixed-size set of random characters. It will ensure the value will not exceed the External Id field character limit but it will not be readable.</inlineHelpText>
-        <label>Hash External Id Value</label>
+        <label>Hash External ID Formula</label>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -230,12 +230,6 @@
     <label>Record Matching Formula</label>
     <listViews>
         <fullName>copado__All</fullName>
-        <columns>NAME</columns>
-        <columns>copado__Field_1__c</columns>
-        <columns>copado__Field_2__c</columns>
-        <columns>copado__Field_3__c</columns>
-        <columns>copado__Hash_Formula__c</columns>
-        <columns>copado__Configuration_Source_Org__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
@@ -244,13 +238,7 @@
         <type>Text</type>
     </nameField>
     <pluralLabel>Record Matching Formulas</pluralLabel>
-    <searchLayouts>
-        <searchResultsAdditionalFields>copado__Field_1__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>copado__Field_2__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>copado__Field_3__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>copado__Hash_Formula__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>copado__Configuration_Source_Org__c</searchResultsAdditionalFields>
-    </searchLayouts>
+    <searchLayouts/>
     <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>

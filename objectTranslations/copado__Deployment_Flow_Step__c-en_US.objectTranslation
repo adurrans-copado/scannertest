@@ -6,7 +6,7 @@
     </fields>
     <fields>
         <help><!-- Git branch linked to the source environment. --></help>
-        <label>Source Branch</label>
+        <label><!-- Branch --></label>
         <name>copado__Branch__c</name>
     </fields>
     <fields>

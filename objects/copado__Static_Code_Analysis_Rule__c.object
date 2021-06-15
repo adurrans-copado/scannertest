@@ -299,6 +299,11 @@
                     <label>AvoidDeeplyNestedIfStmts</label>
                 </value>
                 <value>
+                    <fullName>AvoidDmlStatementsInLoops</fullName>
+                    <default>false</default>
+                    <label>AvoidDmlStatementsInLoops</label>
+                </value>
+                <value>
                     <fullName>AvoidGlobalModifier</fullName>
                     <default>false</default>
                     <label>AvoidGlobalModifier</label>
@@ -317,6 +322,11 @@
                     <fullName>AvoidLogicInTrigger</fullName>
                     <default>false</default>
                     <label>AvoidLogicInTrigger</label>
+                </value>
+                <value>
+                    <fullName>AvoidSoqlInLoops</fullName>
+                    <default>false</default>
+                    <label>AvoidSoqlInLoops</label>
                 </value>
                 <value>
                     <fullName>ClassNamingConventions</fullName>
@@ -407,11 +417,6 @@
                     <fullName>NcssTypeCount</fullName>
                     <default>false</default>
                     <label>NcssTypeCount</label>
-                </value>
-                <value>
-                    <fullName>OperationWithLimitsInLoop</fullName>
-                    <default>false</default>
-                    <label>OperationWithLimitsInLoop</label>
                 </value>
                 <value>
                     <fullName>StdCyclomaticComplexity</fullName>

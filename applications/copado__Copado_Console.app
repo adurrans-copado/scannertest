@@ -2,7 +2,6 @@
 <CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
     <brand>
         <headerColor>#00C3EF</headerColor>
-        <logo>copado__Copado_Logo_Symbol_Only_Blue</logo>
         <logoVersion>1</logoVersion>
         <shouldOverrideOrgTheme>true</shouldOverrideOrgTheme>
     </brand>
@@ -34,17 +33,9 @@
     <tabs>copado__Selenium_Test_Group__c</tabs>
     <tabs>copado__Git_Repository__c</tabs>
     <tabs>copado__Git_Backup__c</tabs>
-    <tabs>copado__Application__c</tabs>
-    <tabs>copado__Application_Feature__c</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>copado__Copado_Console_UtilityBar</utilityBar>
     <workspaceConfig>
-        <mappings>
-            <tab>copado__Application_Feature__c</tab>
-        </mappings>
-        <mappings>
-            <tab>copado__Application__c</tab>
-        </mappings>
         <mappings>
             <tab>copado__Compliance_Rule_Group__c</tab>
         </mappings>

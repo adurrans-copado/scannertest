@@ -51,7 +51,7 @@
         </picklistValues>
     </fields>
     <fields>
-        <label><!-- Total Capacity (Points) --></label>
+        <label><!-- Story points --></label>
         <name>copado__Story_points__c</name>
     </fields>
     <fields>
