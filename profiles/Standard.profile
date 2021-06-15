@@ -6323,6 +6323,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>User.AD_My_Favorite_User_CF__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>User.TIMBASURVEYS__SurveyReminder__c</field>
         <readable>true</readable>
     </fieldPermissions>
