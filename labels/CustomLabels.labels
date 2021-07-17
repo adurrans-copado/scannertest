@@ -14,4 +14,11 @@
         <shortDescription>myFirstCL</shortDescription>
         <value>hello world!</value>
     </labels>
+    <labels>
+        <fullName>no_back_promote_label</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>no back promote label</shortDescription>
+        <value>this is lame</value>
+    </labels>
 </CustomLabels>
