@@ -1,10 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
     <labels>
+        <fullName>AD_1_Fun_Label</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AD 1 Fun Label</shortDescription>
+        <value>This is a fun new label</value>
+    </labels>
+    <labels>
         <fullName>myFirstCL</fullName>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>myFirstCL</shortDescription>
         <value>hello world!</value>
+    </labels>
+    <labels>
+        <fullName>no_back_promote_label</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>no back promote label</shortDescription>
+        <value>this is lame</value>
     </labels>
 </CustomLabels>

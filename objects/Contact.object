@@ -358,6 +358,16 @@ CASE( Dreamforce__c,
         <trackFeedHistory>false</trackFeedHistory>
     </fields>
     <fields>
+        <fullName>DChange_Test__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>DChange Test</description>
+        <externalId>false</externalId>
+        <inlineHelpText>DChange Test</inlineHelpText>
+        <label>DChange Test</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>Department</fullName>
         <trackFeedHistory>false</trackFeedHistory>
     </fields>
