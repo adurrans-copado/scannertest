@@ -2961,6 +2961,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Account.New_Account_CF__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Account.NumberOfEmployees</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -3542,6 +3547,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Contact.Birthdate</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.DChange_Test__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -9824,6 +9834,16 @@
         <field>copado__User_Story__c.copado__userStory_reason__c</field>
         <readable>false</readable>
     </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>user_story_SVMX_Component__c.test_field_1__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>user_story_SVMX_Component__c.test_field_2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
     <layoutAssignments>
         <layout>AD_Custom_Metadata__mdt-AD Custom Metadata Layout</layout>
     </layoutAssignments>
@@ -9842,6 +9862,9 @@
     </layoutAssignments>
     <layoutAssignments>
         <layout>ContactPointPhone-Contact Point Phone Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>user_story_SVMX_Component__c-user story SVMX Component Layout</layout>
     </layoutAssignments>
     <pageAccesses>
         <apexPage>AnswersHome</apexPage>

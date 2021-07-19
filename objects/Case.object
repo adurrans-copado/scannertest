@@ -386,6 +386,33 @@
         </filters>
         <label>My Open Cases</label>
     </listViews>
+    <listViews>
+        <fullName>New_Queue_1_Case</fullName>
+        <filterScope>Queue</filterScope>
+        <label>New Queue 1</label>
+        <queue>New_Queue_1</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>New_Queue_2_Case</fullName>
+        <filterScope>Queue</filterScope>
+        <label>New Queue 2</label>
+        <queue>New_Queue_2</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>New_Queue_3_Case</fullName>
+        <filterScope>Queue</filterScope>
+        <label>New Queue 3</label>
+        <queue>New_Queue_3</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
     <searchLayouts>
         <customTabListAdditionalFields>CASES.CASE_NUMBER</customTabListAdditionalFields>
         <customTabListAdditionalFields>CASES.SUBJECT</customTabListAdditionalFields>

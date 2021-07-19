@@ -176,7 +176,7 @@
         <type>Text</type>
     </nameField>
     <pluralLabel>user story SVMX Components</pluralLabel>
-    <searchLayouts />
+    <searchLayouts/>
     <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>
