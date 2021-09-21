@@ -13,13 +13,14 @@
         <name>copado__Pipeline_Deployment_Modal</name>
     </fieldSets>
     <fields>
-        <label><!-- GLAPI Approval --></label>
-        <name>GLAPI_Process_Deploy__c</name>
-    </fields>
-    <fields>
         <help><!-- Only Active Templates are available when searching for them, for example in deployment steps --></help>
         <label><!-- Active --></label>
         <name>copado__Active__c</name>
+    </fields>
+    <fields>
+        <help><!-- This is a mandatory field if you intend to publish your automation template as copado extension package --></help>
+        <label><!-- Api Name --></label>
+        <name>copado__ApiName__c</name>
     </fields>
     <fields>
         <label><!-- Attach Deployment File --></label>
@@ -80,6 +81,10 @@
         <name>copado__Description__c</name>
     </fields>
     <fields>
+        <label><!-- Do Not Update Promotion --></label>
+        <name>copado__Do_Not_Update_Promotion__c</name>
+    </fields>
+    <fields>
         <label><!-- Execution Context --></label>
         <name>copado__Execution_Context__c</name>
         <picklistValues>
@@ -96,9 +101,9 @@
         <name>copado__Flag_Status__c</name>
     </fields>
     <fields>
-        <label><!-- Source Org --></label>
+        <label><!-- Source Credential --></label>
         <name>copado__From_Org__c</name>
-        <relationshipLabel><!-- Deployments (From Org) --></relationshipLabel>
+        <relationshipLabel><!-- Deployments (From Credential) --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- Git Repository --></label>
@@ -107,6 +112,11 @@
     <fields>
         <label><!-- Last Compliance Scan Date --></label>
         <name>copado__Last_Compliance_Scan_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Parent Deployment --></label>
+        <name>copado__Parent_Deployment__c</name>
+        <relationshipLabel><!-- Deployments (Parent Deployment) --></relationshipLabel>
     </fields>
     <fields>
         <help><!-- This field is auto populated when a manual task is pending on deployment. --></help>

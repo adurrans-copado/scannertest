@@ -66,6 +66,15 @@
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
+                    <name>communicationId</name>
+                    <value>applicationAlerts</value>
+                </componentInstanceProperties>
+                <componentName>copado:copadoAlertPlaceHolder</componentName>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
                     <name>tabs</name>
                     <value>maintabs</value>
                 </componentInstanceProperties>

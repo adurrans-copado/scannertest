@@ -631,6 +631,9 @@ MetadataGrid2.prototype.render = function (cbAfterRender) {
     if ($copado('.mg2_gitOperation').length) {
         gridHeight = ($window.height() - 480).toString();
     }
+    if(!((typeof sforce != 'undefined') && sforce && (!!sforce.one))){
+        gridHeight = gridHeight - 130;
+    }
     if(parseInt(gridHeight) < 400){
         gridHeight = '400';
     }
@@ -673,7 +676,6 @@ MetadataGrid2.prototype.render = function (cbAfterRender) {
     //keep jquery pointer for performance query
     this.eltGrid = this.eltMain.find('.mg2_jqxgrid');
     console.assert(this.eltGrid.length);
-
     //save local source
     this.datasource = source;
 
@@ -971,6 +973,13 @@ MetadataGrid2.prototype.loadMetaData = function (callbackFinished, forceRefresh)
                         ' deleted from the source environment.\n\nPlease ignore this pop-up if you are already aware of this.'
                 );
             }
+            //Sorting grid rows based on the last modified date - Latest first
+            var date1,date2;
+            allMetaData.sort(function(a, b) {
+                date1 = a.d ? new Date(a.d): new Date(1900,12,12);
+                date2 = b.d ? new Date(b.d): new Date(1900,12,12);
+                return date2-date1;
+            });
             that._setGridData(allMetaData);
 
             that.allMetaData_cachedDate = cachedDate;
@@ -1178,6 +1187,9 @@ MetadataGrid2.prototype.reloadSelectionsJSON = function (json, tabNumber) {
     var gridHeight = ($window.height() - 320).toString();
     if ($copado('.mg2_gitOperation').length) {
         gridHeight = ($window.height() - 480).toString();
+    }
+    if(!((typeof sforce != 'undefined') && sforce && (!!sforce.one))){
+        gridHeight = gridHeight - 130;
     }
     if(parseInt(gridHeight) < 400){
         gridHeight = '400';

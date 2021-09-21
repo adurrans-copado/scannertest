@@ -33,7 +33,7 @@
                 <field>copado__Priority__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>copado__Rule_Reference__c</field>
             </layoutItems>
         </layoutColumns>

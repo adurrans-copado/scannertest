@@ -261,6 +261,7 @@ var conversionFunc = conversionFunc || {},
                         format = currentMode;
                         offsetAmount = 30;
                     } else {
+                        currentMode = 'xml';
                         $copado('#xmlJson').css('display', 'none');
                     }
 
@@ -291,18 +292,22 @@ var conversionFunc = conversionFunc || {},
                     });
 
                     $copado('.CodeMirror-merge-editor').prepend(
-                        '<div class="panel top" style="background-color:white;"><center><span>' +
-                            (attach ? resolution : source + jqxdatatable_config.data.orgName) +
-                            '</span></center></div>'
+                        '<div class="panel top" style="background-color:white;"><center><div id="resolutionToolTip" class="slds-popover slds-popover_tooltip slds-nubbin_top-left slds-is-absolute slds-hide toolTipTopHeight" role="tooltip"><div class="slds-popover__body"><div><span>' + resolutionToolTip + '</span></div></div></div><span>' +
+                        (attach ? resolution +
+                            '</span><div onmouseenter="$copado(\'#resolutionToolTip\').removeClass(\'slds-hide\')" onmouseleave="$copado(\'#resolutionToolTip\').addClass(\'slds-hide\')" class="slds-icon_container slds-icon__svg--default slds-p-left_xx-small informationIcon"><svg class="slds-button__icon"><use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg#info"></use></svg></div>' +
+                            '</center></div>' : source + jqxdatatable_config.data.orgName)
                     );
                     $copado('.CodeMirror-merge-pane-rightmost').prepend(
-                        '<div class="panel top" style="background-color:white;"><center><span>' +
-                            (attach ? featureBranch : target + jqxdatatable_config.data.targetOrgName) +
-                            '</span></center></div>'
+                        '<div class="panel top" style="background-color:white;"><center><div id="featureToolTip" class="slds-popover slds-popover_tooltip slds-nubbin_top slds-is-absolute slds-hide toolTipTopHeight" role="tooltip"><div class="slds-popover__body"><div><span>' + featureToolTip + '</span></div></div></div><span>' +
+                        (attach ? featureBranch +
+                            '</span><div onmouseenter="$copado(\'#featureToolTip\').removeClass(\'slds-hide\')" onmouseleave="$copado(\'#featureToolTip\').addClass(\'slds-hide\')" class="slds-icon_container slds-icon__svg--default slds-p-left_xx-small informationIcon"><svg class="slds-button__icon"><use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg#info"></use></svg></div>' +
+                            '</center></div>' : target + jqxdatatable_config.data.targetOrgName)
                     );
                     if ($copado('.CodeMirror-merge-left').length > 0) {
                         $copado('.CodeMirror-merge-left').prepend(
-                            '<div class="panel top" style="background-color:white;"><center><span>' + promotionBranch + '</span></center></div>'
+                            '<div class="panel top" style="background-color:white;"><center><div id="promotionToolTip" class="slds-popover slds-popover_tooltip slds-nubbin_top slds-is-absolute slds-hide toolTipTopHeight" role="tooltip"><div class="slds-popover__body"><div><span>'+promotionToolTip+'</span></div></div></div><span>' + promotionBranch + '</span>'+
+                            '<div onmouseenter="$copado(\'#promotionToolTip\').removeClass(\'slds-hide\')" onmouseleave="$copado(\'#promotionToolTip\').addClass(\'slds-hide\')" class="slds-icon_container slds-icon__svg--default slds-p-left_xx-small informationIcon"><svg class="slds-button__icon"><use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg#info"></use></svg></div>'+
+                            '</center></div>'
                         );
                     }
 
@@ -314,6 +319,7 @@ var conversionFunc = conversionFunc || {},
                         ) + 19;
                     $copado('.CodeMirror-merge-gap').css('height', gapSize);
                 } else {
+                    currentMode = 'xml';
                     $copado('#xmlJson').css('display', 'none');
 
                     CodeMirror.defineMode('highlightSearch', function(config, parserConfig) {
@@ -344,6 +350,7 @@ var conversionFunc = conversionFunc || {},
     };
     self.classSetValue = function(elem) {
         var index = $copado(elem).attr('panel');
+        resolutionToolTip = index === '3' ? resolutionToolTip3panel : resolutionToolTip2panel;
         jsCookies.set('merge.conflict.selection', index);
         $copado('#grp>.slds-button_brand').removeClass('slds-button_brand');
         $copado(elem).addClass('slds-button_brand');
@@ -384,7 +391,7 @@ var conversionFunc = conversionFunc || {},
             }
             usName = val.slice(val.indexOf('>>>>>>>'), val.indexOf(usName) + usName.length); //'>>>>>>> feature/'+usName;
             while (val.indexOf(usName) > -1 && usName && usName.length > 0) {
-                val = (val.slice(0, val.indexOf('=======')) + val.slice(val.indexOf(usName) + usName.length, val.length)).replace('<<<<<<< HEAD', '');
+                val = (val.slice(0, val.indexOf('=======')) + val.slice(val.indexOf(usName) + (usName+'\n').length, val.length)).replace('<<<<<<< HEAD\n', '');
             }
 
             var returnVal = format == 'json' ? conversionFunc.json2yaml(parseOperations.convertXml2formattedJSON(val)) : val;
@@ -398,8 +405,8 @@ var conversionFunc = conversionFunc || {},
                 }
             }
             while (val.indexOf(usName) > -1 && val.indexOf('<<<<<<< HEAD') > -1) {
-                val = (val.slice(0, val.indexOf('<<<<<<< HEAD')) + val.slice(val.indexOf('=======') + '======='.length, val.length)).replace(
-                    usName,
+                val = (val.slice(0, val.indexOf('<<<<<<< HEAD\n')) + val.slice(val.indexOf('=======') + '=======\n'.length, val.length)).replace(
+                    usName+'\n',
                     ''
                 );
             }
@@ -555,7 +562,6 @@ var conversionFunc = conversionFunc || {},
                 node = document.createElement('root');
                 root = true;
             }
-
             for (var x in json) {
                 if (json.hasOwnProperty(x)) {
                     if (typeof json == 'string') {
@@ -615,7 +621,6 @@ var conversionFunc = conversionFunc || {},
                     }
                 }
             }
-
             if (root == true) {
                 return node.innerHTML;
             } else {
@@ -669,6 +674,48 @@ var conversionFunc = conversionFunc || {},
         return param.length != '' ? JSON.stringify(xmlToJson(new DOMParser().parseFromString(param, 'text/xml')), null, '\t') : '';
     };
     parseOperations.convertJSON2formattedXml = function(param) {
-        return formatXml(json2Xml(JSON.parse(param)));
+        return formatXml(jsonToXml(JSON.parse(param)));
+    };
+    jsonToXml = function (o, tab) {
+        var toXml = function (v, name, ind) {
+            var xml = "";
+            if (v instanceof Array) {
+                for (var i = 0, n = v.length; i < n; i++)
+                    xml += ind + toXml(v[i], name, ind + "\t") + "\n";
+            }
+            else if (typeof (v) == "object") {
+                var hasChild = false;
+                xml += ind + "<" + name;
+                for (var m in v) {
+                    if (m.charAt(0) == "@") {
+                        for (var j in v[m]) {
+                            xml += " " + j + "=\"" + v[m][j] + "\"";
+                        }
+                    }
+                    else
+                        hasChild = true;
+                }
+                xml += hasChild ? ">" : "/>";
+                if (hasChild) {
+                    for (var m in v) {
+                        if (m == "#text")
+                            xml += v[m];
+                        else if (m == "#cdata")
+                            xml += "<![CDATA[" + v[m] + "]]>";
+                        else if (m.charAt(0) != "@")
+                            xml += toXml(v[m], m, ind + "\t");
+                    }
+                    xml += (xml.charAt(xml.length - 1) == "\n" ? ind : "") + "</" + name + ">";
+                }
+            }
+            else {
+                xml += ind + "<" + name + ">" + v.toString() + "</" + name + ">";
+            }
+            return xml;
+        }, xml = "";
+        for (var m in o) {
+            xml += toXml(o[m], m, "");
+        }
+        return tab ? xml.replace(/\t/g, tab) : xml.replace(/\t|\n/g, "");
     };
 })(parseOperations);
