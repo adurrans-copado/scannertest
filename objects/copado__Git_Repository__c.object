@@ -350,6 +350,11 @@
                     <default>false</default>
                     <label>Others</label>
                 </value>
+                <value>
+                    <fullName>Copado Version Control</fullName>
+                    <default>false</default>
+                    <label>Copado Version Control</label>
+                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>

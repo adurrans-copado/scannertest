@@ -47,6 +47,10 @@
         <label><!-- Version --></label>
         <name>copado__Version__c</name>
     </fields>
+    <validationRules>
+        <errorMessage><!-- please dont include spaces in version field --></errorMessage>
+        <name>copado__Validate_spaces_in_version</name>
+    </validationRules>
     <webLinks>
         <label><!-- Mass_add_to_Release --></label>
         <name>copado__Mass_add_to_Release</name>

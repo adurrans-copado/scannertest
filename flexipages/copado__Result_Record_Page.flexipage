@@ -111,6 +111,15 @@
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
+                    <name>context</name>
+                    <value>Result Detail</value>
+                </componentInstanceProperties>
+                <componentName>copado:resultStatusContainer</componentName>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
                     <name>parentFieldApiName</name>
                     <value>copado__Result__c.Id</value>
                 </componentInstanceProperties>

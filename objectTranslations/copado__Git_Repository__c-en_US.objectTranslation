@@ -27,6 +27,10 @@
             <translation><!-- Bitbucket --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Copado Version Control</masterLabel>
+            <translation><!-- Copado Version Control --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>GitLab</masterLabel>
             <translation><!-- GitLab --></translation>
         </picklistValues>
