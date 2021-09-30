@@ -433,11 +433,6 @@
             <isRequired>false</isRequired>
         </availableFields>
         <description>This Field Set is used on the Deployment wizard Visualforce Page that will allow administrators to add such custom fields to Step 1 of the deployment wizard.</description>
-        <displayedFields>
-            <field>GLAPI_Process_Deploy__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>false</isRequired>
-        </displayedFields>
         <label>CustomFields</label>
     </fieldSets>
     <fieldSets>
@@ -621,18 +616,6 @@
         <label>Pipeline Deployment Modal</label>
     </fieldSets>
     <fields>
-        <fullName>GLAPI_Process_Deploy__c</fullName>
-        <externalId>false</externalId>
-        <formula>HYPERLINK(&quot;/apex/VF_TEST&quot;, &quot;Turn Approval&quot;,&apos;_blank&apos;)</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>GLAPI Approval</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>copado__Active__c</fullName>
         <defaultValue>false</defaultValue>
         <deprecated>false</deprecated>
@@ -642,6 +625,20 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>copado__ApiName__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <deprecated>false</deprecated>
+        <externalId>true</externalId>
+        <inlineHelpText>This is a mandatory field if you intend to publish your automation template as copado extension package</inlineHelpText>
+        <label>Api Name</label>
+        <length>80</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
     </fields>
     <fields>
         <fullName>copado__Attach_Deployment_File__c</fullName>
@@ -818,6 +815,16 @@ copado__SUM_Deployed__c / copado__Deployment_Jobs_Count__c,
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>copado__Do_Not_Update_Promotion__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Do Not Update Promotion</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>copado__Execution_Context__c</fullName>
         <deprecated>false</deprecated>
         <externalId>false</externalId>
@@ -878,7 +885,7 @@ copado__SUM_Deployed__c / copado__Deployment_Jobs_Count__c,
         <deleteConstraint>SetNull</deleteConstraint>
         <deprecated>false</deprecated>
         <externalId>false</externalId>
-        <label>Source Org</label>
+        <label>Source Credential</label>
         <lookupFilter>
             <active>true</active>
             <filterItems>
@@ -889,7 +896,7 @@ copado__SUM_Deployed__c / copado__Deployment_Jobs_Count__c,
             <isOptional>true</isOptional>
         </lookupFilter>
         <referenceTo>copado__Org__c</referenceTo>
-        <relationshipLabel>Deployments (From Org)</relationshipLabel>
+        <relationshipLabel>Deployments (From Credential)</relationshipLabel>
         <relationshipName>Deployments_From_Org</relationshipName>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -917,6 +924,20 @@ copado__SUM_Deployed__c / copado__Deployment_Jobs_Count__c,
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>copado__Parent_Deployment__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Parent Deployment</label>
+        <referenceTo>copado__Deployment__c</referenceTo>
+        <relationshipLabel>Deployments (Parent Deployment)</relationshipLabel>
+        <relationshipName>Deployments</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
     </fields>
     <fields>
         <fullName>copado__Paused__c</fullName>

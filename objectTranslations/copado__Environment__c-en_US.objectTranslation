@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
     <fields>
+        <label><!-- Higher Environment --></label>
+        <name>Higher_Environment__c</name>
+    </fields>
+    <fields>
         <label><!-- Compliance Rule Group --></label>
         <name>copado__Compliance_Rule_Group__c</name>
         <relationshipLabel><!-- Environments --></relationshipLabel>
@@ -36,6 +40,20 @@
         <name>copado__Current_SCA_Score__c</name>
     </fields>
     <fields>
+        <help><!-- Select an Automation Template to override the default Deployment Behaviour defined in the Pipeline --></help>
+        <label><!-- Deployment Automation Override --></label>
+        <lookupFilter>
+            <errorMessage><!-- Only active automation templates are allowed --></errorMessage>
+        </lookupFilter>
+        <name>copado__Deployment_Automation_Override__c</name>
+        <relationshipLabel><!-- Environments (Deployment Automation Override) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Deployment Job Template Override --></label>
+        <name>copado__Deployment_Job_Template_Override__c</name>
+        <relationshipLabel><!-- Environments (Deployment Job Template Override) --></relationshipLabel>
+    </fields>
+    <fields>
         <help><!-- If enabled, when a Back Promotion is completed and contains Metadata found in User Stories in the destination Environment, the status of the User Story Metadata records of these User Stories will be updated to &quot;Back Promoted&quot;. --></help>
         <label><!-- Index Back Promotion Metadata --></label>
         <name>copado__Index_Back_Promotion_metadata__c</name>
@@ -43,6 +61,10 @@
     <fields>
         <label><!-- Last Compliance Scan Date --></label>
         <name>copado__Last_Compliance_Scan_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Refresh Date --></label>
+        <name>copado__Last_Refresh_Date__c</name>
     </fields>
     <fields>
         <label><!-- Latest Deployment Status --></label>
@@ -105,6 +127,18 @@
         <name>copado__Org_ID__c</name>
     </fields>
     <fields>
+        <label><!-- Platform --></label>
+        <name>copado__Platform__c</name>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Salesforce</masterLabel>
+            <translation><!-- Salesforce --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
         <help><!-- The Default Credential for the target Org is always selected by default. Optionally, the Default Credential can be selected only if the user has no Org Credential for the target Org. --></help>
         <label><!-- Promotion Default Credential --></label>
         <name>copado__Promotion_Default_Credential__c</name>
@@ -116,6 +150,20 @@
             <masterLabel>Only If User Has No Org Credential</masterLabel>
             <translation><!-- Only If User Has No Org Credential --></translation>
         </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Promotion Job Template Override --></label>
+        <name>copado__Promotion_Job_Template_Override__c</name>
+        <relationshipLabel><!-- Environments --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Select an Automation Template to override the default Promotion Behaviour defined in the Pipeline --></help>
+        <label><!-- Promotion Automation Override --></label>
+        <lookupFilter>
+            <errorMessage><!-- Only active automation templates are allowed --></errorMessage>
+        </lookupFilter>
+        <name>copado__Promotion_Override__c</name>
+        <relationshipLabel><!-- Environments (Promotion Automation Override) --></relationshipLabel>
     </fields>
     <fields>
         <help><!-- If selected, &quot;Run all local tests&quot; will be enforced when deploying to this environment. --></help>
@@ -151,6 +199,10 @@
             <translation><!-- Only If User Has No Org Credential --></translation>
         </picklistValues>
     </fields>
+    <validationRules>
+        <errorMessage><!-- An environment cannot have the same automation template for both Promote and Deploy --></errorMessage>
+        <name>copado__Unique_Template_for_promote_and_deploy</name>
+    </validationRules>
     <webLinks>
         <label><!-- Find_Replace_Rule_Editor --></label>
         <name>copado__Find_Replace_Rule_Editor</name>

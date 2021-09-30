@@ -164,4 +164,20 @@
         <name>Workbench</name>
         <type>ConnectedApp</type>
     </appMenuItems>
+    <appMenuItems>
+        <name>copado__Copado_Branch_Management_Lightning</name>
+        <type>CustomApplication</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>copado__Copado_Change_Management_Lightning</name>
+        <type>CustomApplication</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>Home</name>
+        <type>Network</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>standard__PreconfiguredLightningServiceConsole</name>
+        <type>CustomApplication</type>
+    </appMenuItems>
 </AppMenu>

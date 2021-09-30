@@ -126,38 +126,8 @@
     </flexiPageRegions>
     <flexiPageRegions>
         <itemInstances>
-            <fieldInstance>
-                <fieldItem>Record.copado__Script__c</fieldItem>
-            </fieldInstance>
-        </itemInstances>
-        <name>Facet-0cdf030d-660a-40ab-9a9a-4de7ad043b11</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
             <componentInstance>
-                <componentInstanceProperties>
-                    <name>body</name>
-                    <value>Facet-0cdf030d-660a-40ab-9a9a-4de7ad043b11</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:column</componentName>
-            </componentInstance>
-        </itemInstances>
-        <name>Facet-07e6f9cf-7083-4469-96cd-584219451d30</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>columns</name>
-                    <value>Facet-07e6f9cf-7083-4469-96cd-584219451d30</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>label</name>
-                    <value>Definition</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:fieldSection</componentName>
+                <componentName>copado:scriptEditor</componentName>
             </componentInstance>
         </itemInstances>
         <name>Facet-d860289d-313d-4991-a3a1-864b42692915</name>
@@ -167,6 +137,11 @@
         <itemInstances>
             <fieldInstance>
                 <fieldItem>Record.copado__Image_Name__c</fieldItem>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.copado__Worker_Size__c</fieldItem>
             </fieldInstance>
         </itemInstances>
         <name>Facet-730db199-f6c9-4431-ae6f-3af1a7f6a41d</name>
