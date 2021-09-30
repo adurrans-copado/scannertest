@@ -9,11 +9,12 @@
         <name>copado__Deployed__c</name>
     </fields>
     <fields>
+        <help><!-- Read only field used internally for system property replacement. --></help>
         <label><!-- Destination Id --></label>
         <name>copado__Destination_Id__c</name>
     </fields>
     <fields>
-        <label><!-- Destination Org --></label>
+        <label><!-- Destination Credential --></label>
         <name>copado__Destination_Org__c</name>
         <relationshipLabel><!-- Deployment Jobs --></relationshipLabel>
     </fields>
@@ -46,6 +47,7 @@
         <name>copado__External_Status__c</name>
     </fields>
     <fields>
+        <help><!-- Read only field used internally for system property replacement. --></help>
         <label><!-- Repository Id --></label>
         <name>copado__Git_Repository__c</name>
     </fields>
@@ -56,10 +58,12 @@
         <relationshipLabel><!-- Deployment Jobs --></relationshipLabel>
     </fields>
     <fields>
+        <help><!-- Read only field used internally for system property replacement. --></help>
         <label><!-- Pipeline Id --></label>
         <name>copado__Pipeline_Id__c</name>
     </fields>
     <fields>
+        <help><!-- Read only field used internally for system property replacement. --></help>
         <label><!-- Source Id --></label>
         <name>copado__Source_Id__c</name>
     </fields>
@@ -93,7 +97,7 @@
         <relationshipLabel><!-- Deployment Jobs --></relationshipLabel>
     </fields>
     <fields>
-        <label><!-- To Org Name --></label>
+        <label><!-- To Credential Name --></label>
         <name>copado__To_Org_Name__c</name>
     </fields>
     <fields>
@@ -101,4 +105,8 @@
         <label><!-- Validation ID --></label>
         <name>copado__Validation_ID__c</name>
     </fields>
+    <validationRules>
+        <errorMessage><!-- You cannot deploy to this environment. --></errorMessage>
+        <name>Deploy_to_Higher_Environment</name>
+    </validationRules>
 </CustomObjectTranslation>

@@ -142,6 +142,17 @@
     </actionOverrides>
     <allowInChatterGroups>false</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <compactLayouts>
+        <fullName>copado__Hover_Layout</fullName>
+        <fields>Name</fields>
+        <fields>copado__API_Name__c</fields>
+        <fields>copado__Is_Sensitive__c</fields>
+        <fields>copado__ParentId__c</fields>
+        <fields>copado__Pipeline__c</fields>
+        <fields>copado__Environment__c</fields>
+        <fields>copado__User__c</fields>
+        <label>Hover Layout</label>
+    </compactLayouts>
     <deploymentStatus>Deployed</deploymentStatus>
     <deprecated>false</deprecated>
     <enableActivities>false</enableActivities>
@@ -183,7 +194,8 @@
         <defaultValue>false</defaultValue>
         <deprecated>false</deprecated>
         <externalId>false</externalId>
-        <label>Is Sensitive</label>
+        <inlineHelpText>If this field is selected, the value won&apos;t be accessible to any user, and it will be securely saved. The value will remain hidden unless the field is unchecked.</inlineHelpText>
+        <label>Hide Value</label>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -216,9 +228,11 @@
     <fields>
         <fullName>copado__UID__c</fullName>
         <deprecated>false</deprecated>
+        <description>Read-only field used internally for system property replacement.</description>
         <externalId>false</externalId>
         <formula>copado__ParentId__c + &quot;-&quot; + copado__API_Name__c</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Read-only field used internally for system property replacement.</inlineHelpText>
         <label>UID</label>
         <required>false</required>
         <trackTrending>false</trackTrending>
@@ -250,6 +264,15 @@
     <label>System Property</label>
     <listViews>
         <fullName>copado__All</fullName>
+        <columns>NAME</columns>
+        <columns>copado__API_Name__c</columns>
+        <columns>copado__Value__c</columns>
+        <columns>copado__Is_Sensitive__c</columns>
+        <columns>copado__Pipeline__c</columns>
+        <columns>copado__Environment__c</columns>
+        <columns>copado__User__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>CREATED_DATE</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
@@ -258,7 +281,16 @@
         <type>Text</type>
     </nameField>
     <pluralLabel>System Properties</pluralLabel>
-    <searchLayouts/>
+    <searchLayouts>
+        <searchResultsAdditionalFields>copado__API_Name__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>copado__Value__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>copado__Is_Sensitive__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>copado__Pipeline__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>copado__Environment__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>copado__User__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>UPDATEDBY_USER</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CREATED_DATE</searchResultsAdditionalFields>
+    </searchLayouts>
     <sharingModel>Private</sharingModel>
     <validationRules>
         <fullName>copado__API_Name_Cannot_Contain_Spaces</fullName>

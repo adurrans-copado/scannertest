@@ -141,7 +141,17 @@
         <type>Default</type>
     </actionOverrides>
     <allowInChatterGroups>false</allowInChatterGroups>
-    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <compactLayoutAssignment>copado__Promotion_Header</compactLayoutAssignment>
+    <compactLayouts>
+        <fullName>copado__Promotion_Header</fullName>
+        <fields>Name</fields>
+        <fields>copado__Platform__c</fields>
+        <fields>copado__Project__c</fields>
+        <fields>copado__Source_Environment__c</fields>
+        <fields>copado__Destination_Environment__c</fields>
+        <fields>copado__Status__c</fields>
+        <label>Promotion Header</label>
+    </compactLayouts>
     <deploymentStatus>Deployed</deploymentStatus>
     <deprecated>false</deprecated>
     <description>This object tracks the changes that are promoted to the next Salesforce instance.</description>
@@ -632,7 +642,18 @@
         <deprecated>false</deprecated>
         <description>Checked if the promotion is from a higher environment to a lower environment in the deployment flow.</description>
         <externalId>false</externalId>
-        <label>Back Promotion</label>
+        <inlineHelpText>Select this checkbox if you are promoting from a higher to a lower environment in the pipeline.</inlineHelpText>
+        <label>Is Back-Promotion</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>copado__Completed__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>This field is checked by Copado once the promotion is merged and deployed successfully for multi-cloud platform.</inlineHelpText>
+        <label>Completed</label>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -652,7 +673,7 @@
         <defaultValue>false</defaultValue>
         <deprecated>false</deprecated>
         <externalId>false</externalId>
-        <inlineHelpText>Select if you wish to move added permission sets to a Full Permission Sets deployment step.  This will remove them from the Metadata deployment step.</inlineHelpText>
+        <inlineHelpText>Select this checkbox if you wish to move added profiles to a Full Permission Sets step. Doing this will remove the profiles from the Metadata step.</inlineHelpText>
         <label>Create Full Permission Sets Step</label>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
@@ -662,7 +683,7 @@
         <defaultValue>false</defaultValue>
         <deprecated>false</deprecated>
         <externalId>false</externalId>
-        <inlineHelpText>Select if you wish to move added profiles to a Full Profiles deployment step.  This will remove them from the Metadata deployment step.</inlineHelpText>
+        <inlineHelpText>Select this checkbox if you wish to move added permission sets to a Full Profiles step. Doing this will remove the permission sets from the Metadata step.</inlineHelpText>
         <label>Create Full Profiles Step</label>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
@@ -685,8 +706,8 @@
         <deleteConstraint>SetNull</deleteConstraint>
         <deprecated>false</deprecated>
         <externalId>false</externalId>
-        <inlineHelpText>The credential to the Destination Environment that should be used when creating a deployment. This may be auto-populated, if left blank, based on the project&apos;s deployment flow if you are the owner of an Org Credential to the Destination Environment.</inlineHelpText>
-        <label>Destination Org Credential</label>
+        <inlineHelpText>The destination credential that will be used when creating the deployment. This credential is auto-populated based on the pipeline linked to the project.</inlineHelpText>
+        <label>Destination Credential</label>
         <lookupFilter>
             <active>true</active>
             <filterItems>
@@ -697,7 +718,7 @@
             <isOptional>false</isOptional>
         </lookupFilter>
         <referenceTo>copado__Org__c</referenceTo>
-        <relationshipLabel>Promotions (Destination Org Credential)</relationshipLabel>
+        <relationshipLabel>Promotions (Destination Credential)</relationshipLabel>
         <relationshipName>Promotions2</relationshipName>
         <required>false</required>
         <trackTrending>false</trackTrending>
@@ -708,7 +729,7 @@
         <deprecated>false</deprecated>
         <description>Conflicts found in the selected metadata types are not auto-resolved by Copado when merging feature branches into the promotion branch. The conflicts can be manually resolved using Copado.</description>
         <externalId>false</externalId>
-        <inlineHelpText>Conflicts found in the selected metadata types are not auto-resolved by Copado when merging feature branches into the promotion branch. The conflicts can be manually resolved using Copado.</inlineHelpText>
+        <inlineHelpText>Select the metadata types that you want to manually resolve when a conflict occurs while merging the feature branch into the promotion branch.</inlineHelpText>
         <label>Exclude From Auto Resolve</label>
         <required>false</required>
         <trackTrending>false</trackTrending>
@@ -733,9 +754,21 @@
         <fullName>copado__Order_by__c</fullName>
         <deprecated>false</deprecated>
         <externalId>false</externalId>
-        <inlineHelpText>Fill this field only if you want to change the selected user stories order on deployment. (usage exp: name asc, copado__backlog_rank__c desc)</inlineHelpText>
+        <inlineHelpText>Populate this field if you want to set an ascending or descending merge order for the selected user stories in a deployment. For example: &quot;status__c asc&quot; or &quot;name asc, copado__backlog_rank__c desc&quot;.</inlineHelpText>
         <label>Order User Stories by</label>
         <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>copado__Platform__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <formula>IF( NOT(ISBLANK( copado__Project__c )) ,  TEXT(copado__Project__r.copado__Deployment_Flow__r.copado__Platform__c) ,  IF( NOT(ISBLANK( copado__Release__c )),  TEXT(copado__Release__r.copado__Project__r.copado__Deployment_Flow__r.copado__Platform__c) , &apos;Salesforce&apos;) )</formula>
+        <inlineHelpText>This field auto-populates and displays the pipeline platform.</inlineHelpText>
+        <label>Platform</label>
         <required>false</required>
         <trackTrending>false</trackTrending>
         <type>Text</type>
@@ -746,7 +779,7 @@
         <deleteConstraint>SetNull</deleteConstraint>
         <deprecated>false</deprecated>
         <externalId>false</externalId>
-        <inlineHelpText>The selected Project should be linked to an active Deployment Flow</inlineHelpText>
+        <inlineHelpText>Select a project linked to an active pipeline.</inlineHelpText>
         <label>Project</label>
         <referenceTo>copado__Project__c</referenceTo>
         <relationshipLabel>Promotions</relationshipLabel>
@@ -774,7 +807,8 @@
         <defaultValue>false</defaultValue>
         <deprecated>false</deprecated>
         <externalId>false</externalId>
-        <label>Send Deployment Complete email</label>
+        <inlineHelpText>Select this checkbox if you want the promotion owner to receive an email notification when the promotion is complete.</inlineHelpText>
+        <label>Notify When Complete</label>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -796,8 +830,8 @@
         <deleteConstraint>SetNull</deleteConstraint>
         <deprecated>false</deprecated>
         <externalId>false</externalId>
-        <inlineHelpText>The credential to the Source Environment that should be used when creating a deployment. This may be auto-populated, if left blank, based on the project&apos;s deployment flow if you are the owner of an Org Credential to the Source Environment.</inlineHelpText>
-        <label>Source Org Credential</label>
+        <inlineHelpText>The source credential that will be used when creating the deployment. This credential is auto-populated based on the pipeline linked to the project.</inlineHelpText>
+        <label>Source Credential</label>
         <lookupFilter>
             <active>true</active>
             <filterItems>
@@ -808,7 +842,7 @@
             <isOptional>false</isOptional>
         </lookupFilter>
         <referenceTo>copado__Org__c</referenceTo>
-        <relationshipLabel>Promotions (Source Org Credential)</relationshipLabel>
+        <relationshipLabel>Promotions (Source Credential)</relationshipLabel>
         <relationshipName>Promotions1</relationshipName>
         <required>false</required>
         <trackTrending>false</trackTrending>
