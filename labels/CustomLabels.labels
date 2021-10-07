@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
     <labels>
+        <fullName>holycrap</fullName>
+        <categories>holycrap</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>holycrap</shortDescription>
+        <value>holycrap</value>
+    </labels>
+    <labels>
         <fullName>myFirstCL</fullName>
         <language>en_US</language>
         <protected>false</protected>
